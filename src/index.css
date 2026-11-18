@@ -1,0 +1,104 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-fondo: #0e1011;
+  --color-superficie: #181b1d;
+  --color-elevada: #23272a;
+  --color-borde: #3a4145;
+  --color-texto: #f1f3f2;
+  --color-suave: #aab3b7;
+  --color-acento: #c6f24e;
+  --color-sobre-acento: #151b06;
+  --color-peligro: #ff9587;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, sans-serif;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+    background: var(--color-fondo);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    min-height: 100dvh;
+    background: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: var(--font-sans);
+    overscroll-behavior-y: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button,
+  a,
+  label {
+    touch-action: manipulation;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  input,
+  select,
+  textarea {
+    font-size: 1.0625rem;
+  }
+
+  input[type='date'] {
+    -webkit-appearance: none;
+    appearance: none;
+    display: block;
+  }
+
+  input[type='date']::-webkit-date-and-time-value {
+    text-align: left;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-acento);
+    outline-offset: 2px;
+  }
+}
+
+@utility pt-segura {
+  padding-top: calc(env(safe-area-inset-top) + 1rem);
+}
+
+@utility pb-segura {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 0.5rem);
+}
+
+@utility pb-con-nav {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 10rem);
+}
+
+@utility pb-con-barra {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 7rem);
+}
+
+@utility bottom-fab {
+  bottom: calc(env(safe-area-inset-bottom) + 5.5rem);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .hoja-entrada {
+    animation: hoja-sube 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .velo-entrada {
+    animation: velo-aparece 180ms ease-out;
+  }
+}
+
+@keyframes hoja-sube {
+  from {
+    transform: translateY(2rem);
+  }
+}
+
+@keyframes velo-aparece {
+  from {
+    opacity: 0;
+  }
+}
